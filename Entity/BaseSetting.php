@@ -41,6 +41,11 @@ abstract class BaseSetting implements SettingInterface {
 	protected $value;
 
 	/**
+	 * @var boolean
+	 */
+	protected $active;
+
+	/**
      * @OneToOne(targetEntity="BaseSetting")
      * @JoinColumn(name="setting_id", referencedColumnName="id")
      */
@@ -81,6 +86,16 @@ abstract class BaseSetting implements SettingInterface {
 
 	public function getValue() {
 		return $this->value;
+	}
+
+	public function getActive(): bool
+	{
+		return $this->active;
+	}
+
+	public function setActive(bool $active) {
+		$this->active = $active;
+		return $this;
 	}
 
 	public function getSetting(): Setting

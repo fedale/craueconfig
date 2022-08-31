@@ -14,9 +14,27 @@
 	<mapped-superclass name="Craue\ConfigBundle\Entity\BaseSetting">
 		<id name="id" column="id" type="integer">
 			<generator strategy="AUTO" />
+			<options>
+				<option name="unsigned">true</option>
+			</options>
 		</id>
-		<field name="key" column="key" type="string" />
-		<!-- Define the mapping for field "value" only in child classes to allow easy overriding. -->
-		<field name="section" column="section" type="string" nullable="true" />
+		<field name="context" column="context" type="string" length="128" />
+		<field name="section" column="section" type="string" length="128" />
+		<field name="key" column="key" type="string" length="128" />
+		<field name="value" column="value" type="text" />
+		<field name="active" column="active" type="boolean">
+			<options>
+				<option name="default">1</option>
+			</options>
+		</field>
+		<indexes>
+			<index name="context" columns="context" />
+			<index name="section" columns="section" />
+			<index name="key" columns="key" />
+			<index name="active" columns="active" />
+		</indexes>
+		<unique-constraints>
+        	<unique-constraint name="context_section_key" columns="context,section,key" />
+    	</unique-constraints>
 	</mapped-superclass>
 </doctrine-mapping>
