@@ -21,12 +21,6 @@ abstract class BaseSetting implements SettingInterface {
 	 * @var string
 	 * @Assert\NotBlank
 	 */
-	protected $context;
-
-	/**
-	 * @var string
-	 * @Assert\NotBlank
-	 */
 	protected $section;
 
 	/**
@@ -53,15 +47,6 @@ abstract class BaseSetting implements SettingInterface {
 
 	public function getId() {
 		return $this->id;
-	}
-
-
-	public function setContext($context) {
-		$this->context = $context;
-	}
-
-	public function getContext() {
-		return $this->context;
 	}
 
 	public function setSection($section) {
@@ -111,15 +96,13 @@ abstract class BaseSetting implements SettingInterface {
 
 	/**
 	 * Creates a {@code SettingInterface}.
-	 * @param string $context
 	 * @param string $section
 	 * @param string|null $app
 	 * @param string|null $value
 	 * @return SettingInterface
 	 */
-	public static function create($context = 'default', $section = 'app', $key = null, $value = null ) {
+	public static function create($section = 'app', $key = null, $value = null ) {
 		$setting = new static();
-		$setting->setContext($context);
 		$setting->setSection($section);
 		$setting->setKey($key);
 		$setting->setValue($value);

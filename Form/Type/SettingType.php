@@ -58,7 +58,7 @@ class SettingType extends AbstractType {
 	 * {@inheritDoc}
 	 */
 	public function getBlockPrefix() : string {
-		return 'fedale_setting';
+		return 'setting';
 	}
 
 }

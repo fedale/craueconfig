@@ -157,7 +157,7 @@ class Config {
 		$result = [];
 
 		foreach ($settings as $setting) {
-			$result[$setting->getName()] = $setting->getValue();
+			$result[$setting->getSection() . '.' . $setting->getKey()] = $setting->getValue();
 		}
 
 		return $result;

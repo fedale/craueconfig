@@ -9,9 +9,6 @@ namespace Craue\ConfigBundle\Entity;
  */
 interface SettingInterface {
 
-	function setContext($context);
-	function getContext();
-
 	function setSection($section);
 	function getSection();
 
