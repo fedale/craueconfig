@@ -14,17 +14,11 @@ use Craue\ConfigBundle\Util\Config;
  * @license http://opensource.org/licenses/mit-license.php MIT License
  */
 class CraueConfigBundle extends Bundle {
-
-    private $config;
-
-    public function __construct(Config $config)
-    {
-        $this->config = $config;
-    }
+    
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
 
-        $container->addCompilerPass(new ConfigPass($config), PassConfig::TYPE_AFTER_REMOVING);
+        $container->addCompilerPass(new ConfigPass(), PassConfig::TYPE_AFTER_REMOVING, 1000);
     }
 }
