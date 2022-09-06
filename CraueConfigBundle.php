@@ -19,6 +19,6 @@ class CraueConfigBundle extends Bundle {
     {
         parent::build($container);
 
-        $container->addCompilerPass(new ConfigPass(), PassConfig::TYPE_AFTER_REMOVING, 1000);
+        $container->addCompilerPass(new ConfigPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION);
     }
 }
