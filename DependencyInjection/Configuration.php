@@ -32,6 +32,9 @@ class Configuration implements ConfigurationInterface {
 				->scalarNode('entity_name')
 					->defaultValue(Setting::class)
 				->end()
+				->scalarNode('context')
+					->defaultValue('fedale')
+				->end()
 			->end()
 		;
 

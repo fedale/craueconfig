@@ -37,6 +37,7 @@ class CraueConfigExtension extends Extension implements PrependExtensionInterfac
 
 		$container->setParameter('craue_config.db_driver.' . $config['db_driver'], true);
 		$container->setParameter('craue_config.entity_name', $config['entity_name']);
+		$container->setParameter('craue_config.context', $config['context']);
 
 		$container->prependExtensionConfig('doctrine', [
 			'orm' => [

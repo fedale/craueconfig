@@ -18,21 +18,37 @@
 				<option name="unsigned">true</option>
 			</options>
 		</id>
-		<field name="section" column="section" type="string" length="128" />
+		<field name="context" column="context" type="string" length="128">
+			<options>
+				<option name="default">fedale</option>
+			</options>
+		</field>
+		<field name="section" column="section" type="string" length="128">
+		<options>
+				<option name="default">app</option>
+			</options>
+		</field>
 		<field name="key" column="key" type="string" length="128" />
 		<field name="value" column="value" type="text" />
+		<field name="cast" column="cast" type="string" length="32">
+			<options>
+				<option name="default">string</option>
+			</options>
+		</field>
 		<field name="active" column="active" type="boolean">
 			<options>
 				<option name="default">1</option>
 			</options>
 		</field>
 		<indexes>
+			<index name="context" columns="context" />
 			<index name="section" columns="section" />
 			<index name="key" columns="key" />
+			<index name="cast" columns="cast" />
 			<index name="active" columns="active" />
 		</indexes>
 		<unique-constraints>
-        	<unique-constraint name="context_section_key" columns="section,key" />
+        	<unique-constraint name="context_section_key" columns="context,section,key" />
     	</unique-constraints>
 	</mapped-superclass>
 </doctrine-mapping>

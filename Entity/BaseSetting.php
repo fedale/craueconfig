@@ -21,6 +21,12 @@ abstract class BaseSetting implements SettingInterface {
 	 * @var string
 	 * @Assert\NotBlank
 	 */
+	protected $context;
+
+	/**
+	 * @var string
+	 * @Assert\NotBlank
+	 */
 	protected $section;
 
 	/**
@@ -33,6 +39,11 @@ abstract class BaseSetting implements SettingInterface {
 	 * @var string|null
 	 */
 	protected $value;
+
+	/**
+	 * @var string|null
+	 */
+	protected $cast;
 
 	/**
 	 * @var boolean
@@ -49,6 +60,14 @@ abstract class BaseSetting implements SettingInterface {
 		return $this->id;
 	}
 
+	public function setContext($context) {
+		$this->context = $context;
+	}
+
+	public function getContext() {
+		return $this->context;
+	}
+	
 	public function setSection($section) {
 		$this->section = $section;
 	}
@@ -73,6 +92,16 @@ abstract class BaseSetting implements SettingInterface {
 		return $this->value;
 	}
 
+	public function getCast(): string
+	{
+		return $this->cast;
+	}
+
+	public function setCaste(string $cast) {
+		$this->cast = $cast;
+		return $this;
+	}
+	
 	public function getActive(): bool
 	{
 		return $this->active;
@@ -101,11 +130,14 @@ abstract class BaseSetting implements SettingInterface {
 	 * @param string|null $value
 	 * @return SettingInterface
 	 */
-	public static function create($section = 'app', $key = null, $value = null ) {
+	public static function create($context = 'fedale', $section = 'app', $key = null, $value = null, $cast = 'string', $active = true) {
 		$setting = new static();
+		$setting->setContext($context);
 		$setting->setSection($section);
 		$setting->setKey($key);
 		$setting->setValue($value);
+		$setting->setCast($cast);
+		$setting->setActive($active);
 
 		return $setting;
 	}
