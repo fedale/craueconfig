@@ -39,6 +39,9 @@ class CraueConfigExtension extends Extension implements PrependExtensionInterfac
 		$container->setParameter('craue_config.entity_name', $config['entity_name']);
 		$container->setParameter('craue_config.context', $config['context']);
 
+		// $container->setParameter('craue_config.context', 'danilo2');
+		// $container->setParameter('app.default_path', '/home/danilo/default_path');
+
 		$container->prependExtensionConfig('doctrine', [
 			'orm' => [
 				'mappings' => [

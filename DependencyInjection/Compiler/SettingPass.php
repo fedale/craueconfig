@@ -11,13 +11,19 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 use Doctrine\DBAL\DriverManager;
 
-class ConfigPass implements CompilerPassInterface
+class SettingPass implements CompilerPassInterface
 {
 
     public function process(ContainerBuilder $container): void
     {        
+        // Try to set Twig config
+        $container->setParameter('twig.default_path', '/home/fedale/sp/repara/app/templates');
+        $container->setParameter('craue_config.context', 'danilo2');
+        return;
+
         $context = $container->getParameter('craue_config.context');
         $settings = $this->getSettings($context); 
+
         foreach ($settings as $setting) {
             $key = $setting['akey'];
             if($setting['bvalue'] == null){
@@ -33,6 +39,8 @@ class ConfigPass implements CompilerPassInterface
                 $key,
                 $value
             );
+
+           
         }
     }
 
@@ -57,8 +65,8 @@ class ConfigPass implements CompilerPassInterface
             FROM setting a
             LEFT JOIN setting b
             ON (
-                    (a.section, a.`key`) = (b.section, b.`key`)
-                    AND b.context = :context
+                (a.section, a.`key`) = (b.section, b.`key`)
+                AND b.context = :context
             )
             GROUP BY a.section, a.`key`";
 

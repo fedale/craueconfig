@@ -2,7 +2,7 @@
 
 namespace Craue\ConfigBundle;
 
-use Craue\ConfigBundle\DependencyInjection\Compiler\ConfigPass;
+use Craue\ConfigBundle\DependencyInjection\Compiler\SettingPass;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -19,6 +19,7 @@ class CraueConfigBundle extends Bundle {
     {
         parent::build($container);
 
-        $container->addCompilerPass(new ConfigPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION);
+        $container->addCompilerPass(new SettingPass(), PassConfig::TYPE_REMOVE, -1000);
+        // $container->addCompilerPass(new SettingPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION);
     }
 }
