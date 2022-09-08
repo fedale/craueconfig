@@ -17,9 +17,8 @@ class SettingPass implements CompilerPassInterface
     public function process(ContainerBuilder $container): void
     {        
         // Try to set Twig config
-        $container->setParameter('twig.default_path', '/home/fedale/sp/repara/app/templates');
+        $container->setParameter('twig.default_path', '/home/default_path');
         $container->setParameter('craue_config.context', 'danilo2');
-        return;
 
         $context = $container->getParameter('craue_config.context');
         $settings = $this->getSettings($context); 
@@ -39,9 +38,8 @@ class SettingPass implements CompilerPassInterface
                 $key,
                 $value
             );
-
-           
         }
+        //$container->setParameter('twig.default_path', 'danilo2');
     }
 
     private function getSettings($context = 'fedale')

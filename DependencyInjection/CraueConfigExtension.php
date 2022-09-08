@@ -34,14 +34,15 @@ class CraueConfigExtension extends Extension implements PrependExtensionInterfac
 	 */
 	public function prepend(ContainerBuilder $container) {
 		$config = $this->processConfiguration(new Configuration(), $container->getExtensionConfig($this->getAlias()));
+		// $twigConfig = $this->processConfiguration(new Configuration(), $container->getExtensionConfig('twig'));
 
 		$container->setParameter('craue_config.db_driver.' . $config['db_driver'], true);
 		$container->setParameter('craue_config.entity_name', $config['entity_name']);
 		$container->setParameter('craue_config.context', $config['context']);
 
 		// $container->setParameter('craue_config.context', 'danilo2');
-		// $container->setParameter('app.default_path', '/home/danilo/default_path');
-
+		$container->setParameter('twig.default_path', '/home/danilo/default_path');
+		
 		$container->prependExtensionConfig('doctrine', [
 			'orm' => [
 				'mappings' => [
@@ -53,6 +54,7 @@ class CraueConfigExtension extends Extension implements PrependExtensionInterfac
 				],
 			],
 		]);
+
 	}
 
 }
