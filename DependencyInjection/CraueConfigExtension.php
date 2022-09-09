@@ -27,6 +27,13 @@ class CraueConfigExtension extends Extension implements PrependExtensionInterfac
 		$loader->load('form.xml');
 		$loader->load('twig.xml');
 		$loader->load('util.xml');
+
+		$container->prependExtensionConfig('twig', [
+			'default_path' => '/path/to/my/custom/dir',
+			'globals' => [
+				'myConfig' => 'my value from prependExtension'
+			]
+		]);
 	}
 
 	/**
@@ -39,9 +46,6 @@ class CraueConfigExtension extends Extension implements PrependExtensionInterfac
 		$container->setParameter('craue_config.db_driver.' . $config['db_driver'], true);
 		$container->setParameter('craue_config.entity_name', $config['entity_name']);
 		$container->setParameter('craue_config.context', $config['context']);
-
-		// $container->setParameter('craue_config.context', 'danilo2');
-		$container->setParameter('twig.default_path', '/home/danilo/default_path');
 		
 		$container->prependExtensionConfig('doctrine', [
 			'orm' => [
@@ -54,6 +58,8 @@ class CraueConfigExtension extends Extension implements PrependExtensionInterfac
 				],
 			],
 		]);
+
+		
 
 	}
 

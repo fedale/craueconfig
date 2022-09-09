@@ -7,6 +7,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Craue\ConfigBundle\Util\Config;
+// use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
 /**
  * @author Christian Raue <christian.raue@gmail.com>
@@ -19,7 +20,9 @@ class CraueConfigBundle extends Bundle {
     {
         parent::build($container);
 
-        $container->addCompilerPass(new SettingPass(), PassConfig::TYPE_REMOVE, -1000);
-        $container->addCompilerPass(new SettingPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION);
+        //$container->addCompilerPass(new SettingPass(), PassConfig::TYPE_REMOVE, -1000);
+        //$container->addCompilerPass(new SettingPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION);
+        
+        $container->addCompilerPass(new SettingPass(), PassConfig::TYPE_AFTER_REMOVING);
     }
 }
