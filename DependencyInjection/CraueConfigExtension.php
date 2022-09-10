@@ -27,13 +27,15 @@ class CraueConfigExtension extends Extension implements PrependExtensionInterfac
 		$loader->load('form.xml');
 		$loader->load('twig.xml');
 		$loader->load('util.xml');
+		$loader->load('event.xml');
 
-		$container->prependExtensionConfig('twig', [
-			'default_path' => '/path/to/my/custom/dir',
-			'globals' => [
-				'myConfig' => 'my value from prependExtension'
-			]
-		]);
+		// $container->prependExtensionConfig('twig', [
+		// 	'default_path' => '/home/danilo/docker/repara/app/templates',
+		// 	'globals' => [
+		// 		'myConfig' => 'my value from prependExtension'
+		// 	]
+		// ]);
+
 	}
 
 	/**
@@ -60,7 +62,6 @@ class CraueConfigExtension extends Extension implements PrependExtensionInterfac
 		]);
 
 		
-
 	}
 
 }

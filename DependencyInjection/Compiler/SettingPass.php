@@ -16,6 +16,7 @@ class SettingPass implements CompilerPassInterface
 
     public function process(ContainerBuilder $container): void
     {        
+        die('SettingPass.process'); 
         $context = $container->getParameter('craue_config.context');
         $settings = $this->getSettings($context); 
 
